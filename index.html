@@ -1,0 +1,50 @@
+<head>
+	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+</head>
+
+<body>
+<h1>
+Hello! This is saamwerk!!</h1>
+</body>
+<script>
+
+var fire = new Firebase('https://popping-torch-80.firebaseio.com/root/');
+fire.auth("O0p7Mj23X8YwQZimL8ZbVCQmlsv1UlXQjcFWrU1J");
+
+function setter(ups, keywords)
+{
+	// set the interested variable in `count` -- int
+	// accept the keywords as a string in `keywords` -- string
+	// set the upstream link in `ups` -- string
+	
+	// get an array of keywords
+	var keys = keywords.split(',');
+
+	var repo_name = ups.slice(ups.lastIndexOf("\\"), ups.length);
+
+	var count = 0;
+
+	var onComplete = function(error) {
+  		if (error) {
+    		console.log('Synchronization failed');
+  		} 
+  		else {
+  			console.log('Synchronization succeeded');
+  		}
+	};
+
+	fire.push({interested:count, keys, name:repo_name, upstream:ups}, onComplete);
+
+};
+
+function getter(keywords)
+{
+	// split the keywords into an array
+	//then recursively search for those records which have these keywords
+
+	keys = keywords.split(' ');
+	var root = fire.hasChildren();
+	root.foreach(document.write)
+
+
+}
