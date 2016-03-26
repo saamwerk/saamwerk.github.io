@@ -1,16 +1,17 @@
+<html>
 <head>
 	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 
 <body>
-<h1>
-Hello! This is saamwerk!!</h1>
-</body>
-<script>
 
+<script>
+document.write("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 var fire = new Firebase('https://popping-torch-80.firebaseio.com/root/');
 fire.auth("O0p7Mj23X8YwQZimL8ZbVCQmlsv1UlXQjcFWrU1J");
-
+document.write("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+setter("https://github.com/coderabhishek/search_util","NLP Python");
+document.write("fffffffffffffffffffffffffffffffff");
 function setter(ups, keywords)
 {
 	// set the interested variable in `count` -- int
@@ -18,7 +19,7 @@ function setter(ups, keywords)
 	// set the upstream link in `ups` -- string
 	
 	// get an array of keywords
-	var keys = keywords.split(',');
+	var keys = keywords.split(' ');
 
 	var repo_name = ups.slice(ups.lastIndexOf("\\"), ups.length);
 
@@ -32,10 +33,13 @@ function setter(ups, keywords)
   			console.log('Synchronization succeeded');
   		}
 	};
+	//function makejsn(element)
+	//var str = "";
+	//keys.foreach(makejsn)
+	var dd = fire.push({interested:count, keys, name:repo_name, upstream:ups}, onComplete);
 
-	fire.push({interested:count, keys, name:repo_name, upstream:ups}, onComplete);
 
-};
+}
 
 function getter(keywords)
 {
@@ -48,3 +52,6 @@ function getter(keywords)
 
 
 }
+</script>
+</body>
+</html>
